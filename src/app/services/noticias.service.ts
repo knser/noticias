@@ -26,14 +26,14 @@ export class NoticiasService {
   }
 
   getTitulares(){
-    return this.ejecutarServicio('/top-headlines?country=us');
+    return this.ejecutarServicio<Titulares>('/top-headlines?country=us');
     //return this.httpClient.get<Titulares>('https://newsapi.org/v2/top-headlines?country=us&apiKey=fdb5419249794b839700a1345cbb393d');
   }
 
   getCategorias(categoria:string){
-    //return this.ejecutarServicio(`/top-headlines?country=us&category=${categoria}`);
+    return this.ejecutarServicio<Titulares>('/top-headlines?country=us&category='+categoria);
     //return this.httpClient.get<Titulares>('https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=fdb5419249794b839700a1345cbb393d');
-    return this.httpClient.get<Titulares>('https://newsapi.org/v2/top-headlines?country=us&apiKey=fdb5419249794b839700a1345cbb393d&category=business');
+    //return this.httpClient.get<Titulares>('https://newsapi.org/v2/top-headlines?country=us&apiKey=fdb5419249794b839700a1345cbb393d&category=business');
   }
 
 }

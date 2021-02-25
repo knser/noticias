@@ -4,8 +4,8 @@
       Tab 2
     </ion-title>
   </ion-toolbar>
-  <ion-segment scrollable color="danger" (ionChange)="segmentChanged($event)" >
-    <ion-segment-button value="categoria" *ngFor="let categoria of categorias">
+  <ion-segment scrollable color="danger" (ionChange)="cambiodecategoria($event)" >
+    <ion-segment-button value={{categoria}} *ngFor="let categoria of categorias">
       <ion-label>
         {{categoria}}
       </ion-label>
@@ -14,5 +14,5 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
+  <app-noticias [noticias]="noticias"></app-noticias>
 </ion-content>
