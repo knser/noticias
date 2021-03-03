@@ -1,15 +1,67 @@
-<ion-card>
-  <ion-card-header>
-    <ion-card-subtitle>
-      {{i+1}} {{noticia.source.name}}
-    </ion-card-subtitle>
-    <ion-card-title>
-      {{noticia.title}}
-    </ion-card-title>
-  </ion-card-header>
-  <ion-img *ngIf="noticia.urlToImage" [src]="noticia.urlToImage">
-  </ion-img>
-  <ion-card-content>
-     <p>{{noticia.description}}</p>
-  </ion-card-content>
-</ion-card>
+<ion-list>
+    <ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <div>
+              <small>{{i+1}} {{noticia.source.name}}</small>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div class="ion-text-end">
+              <ion-fab vertical="top" horizontal="start" slot="fixed">             
+                <ion-fab-button size="small" color="light" style="margin-top: -15px;--box-shadow:none;" (click)="lanzarAction()">
+                  <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+                </ion-fab-button>
+              </ion-fab>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div class="ion-text-end">
+              <ion-fab vertical="top" horizontal="end" slot="fixed">             
+                <ion-fab-button size="small" color="light" style="margin-top: -15px;--box-shadow:none;">
+                  <ion-icon name="arrow-redo-outline"></ion-icon>
+                </ion-fab-button>
+                <ion-fab-list side="bottom">
+                  <ion-fab-button color="secondary" (click)="abrir()">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </ion-fab-button>                  
+                  <ion-fab-button color="primary" (click)="compartir()">
+                    <ion-icon name="share-social-outline"></ion-icon>
+                  </ion-fab-button>
+                </ion-fab-list>
+                <ion-fab-list side="start">
+                  <ion-fab-button color="danger">
+                    <ion-icon name="heart-outline"></ion-icon>
+                  </ion-fab-button>
+                </ion-fab-list>    
+              </ion-fab>
+            </div>
+          </ion-col>          
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <div>
+              {{noticia.title}}
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <div>
+              <ion-img *ngIf="noticia.urlToImage" [src]="noticia.urlToImage">
+              </ion-img>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <div>
+              <p>{{noticia.description}}</p>
+            </div>
+          </ion-col>
+        </ion-row>            
+      </ion-grid> 
+
+    </ion-item>
+</ion-list>

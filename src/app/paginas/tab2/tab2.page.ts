@@ -24,6 +24,9 @@ export class Tab2Page implements OnInit {
     this.cargarnoticias(this.categorias[0]);
   }
 
+  loadData(event){
+    this.cargarnoticias(event);
+  }  
   
   cambiodecategoria(event){
     this.noticias=[];
@@ -31,12 +34,29 @@ export class Tab2Page implements OnInit {
     this.cargarnoticias(event.detail.value);   
   }
 
+  /*
   cargarnoticias(categoria:string){
     this.NoticiasService.getCategorias(categoria).subscribe(resp=>{
       console.log('categoria:'+categoria);
       this.noticias.push(...resp.articles);
     }) 
   }
+  */
   
+  cargarnoticias(categoria:string, event?){
+    this.NoticiasService.getCategorias(categoria).subscribe(resp=>{
+      if(resp.articles.length===0){
+        event.target.disabled=true;
+        event.target.complete();
+        return;
+      }
+      this.noticias.push(...resp.articles);
+    })
+    if(event){
+      event.target.complete();
+    }
+  }
+
+
 
 }

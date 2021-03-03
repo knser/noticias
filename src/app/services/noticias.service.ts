@@ -17,6 +17,8 @@ const headers=new HttpHeaders({
 })
 export class NoticiasService {
 
+  paginasTitulares:number=0;
+
   constructor(private httpClient:HttpClient) { }
 
   private ejecutarServicio<t>(query:string){
@@ -26,7 +28,9 @@ export class NoticiasService {
   }
 
   getTitulares(){
-    return this.ejecutarServicio<Titulares>('/top-headlines?country=us');
+    this.paginasTitulares++;
+    return this.ejecutarServicio<Titulares>('/top-headlines?country=us&page='+this.paginasTitulares);
+    //return this.ejecutarServicio<Titulares>('/top-headlines?country=us');
     //return this.httpClient.get<Titulares>('https://newsapi.org/v2/top-headlines?country=us&apiKey=fdb5419249794b839700a1345cbb393d');
   }
 
